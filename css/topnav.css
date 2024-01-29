@@ -1,0 +1,45 @@
+.top-nav{
+    display:inline-block;
+    background: #f1f1f1;
+    width:100%;
+    border-bottom: 1px #e1e1e1 solid;
+}
+
+/* Tạo social icon */
+.social-top-nav{
+    float:left;
+    display:table;
+}
+.social-top-nav a{
+    display: table-cell;
+    padding:5px;
+    text-align: center;
+    
+}
+
+.top-nav-quicklink{
+    float: right;
+}
+.top-nav-quicklink li {
+    display:inline-block;
+    font-size: 1em;
+    color : gray;
+}
+.top-nav-quicklink li a{
+    display:block;
+    color : gray;
+    text-decoration: none;
+    padding : 8px 15px;
+    transition-duration: .15s;
+}
+.top-nav-quicklink li a:hover{
+    padding-top: 4px;
+    border-bottom :4px solid #000;
+    color : #000;
+}
+.top-nav-quicklink li a:hover i{
+    color : blue;
+}
+/* Hiển thị màu khi hover vào icon  */
+.fa-facebook:hover{color : red;}
+.fa-twitter:hover{color : red;}

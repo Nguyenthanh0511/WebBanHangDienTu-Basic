@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cùng Thành Lập Trình </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/topnav.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <!-- owl carousel libraries -->
+    <link rel="stylesheet" href="./js/owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="./js/owlcarousel/owl.carousel.min.css">
+    <script src="./js/Jquery/Jquery.min.js"></script>
+    <script src="./js/owlcarousel/owl.carousel.min.js"></script>
+    <script src='main.js'></script>
+    <script src='./js/Aw/all.js'></script>
+    <script src='./js/Aw/Banner.js'></script>
+    <!-- Include jQuery and Owl Carousel libraries -->
+    <!-- Include jQuery -->
+   
+</head>
+
+<body>
+
+    <!-- TopNav -->
+    <div class="top-nav">
+        <section>
+            <!-- Logo social -->
+            <div class="social-top-nav">
+                <a class="fa fa-facebook"></a>
+                <a class="fa fa-twitter"></a>
+                <a class="fa fa-google"></a>
+                <a class="fa fa-youtube"></a>
+            </div>
+            <!-- Lựa chọn trang  -->
+            <!-- <div> -->
+            <ul class="top-nav-quicklink flexcontain">
+                <li><a href="index.html"><i class="fa fa-home"></i> Trang chủ</a></li>
+                <li><a href="tintuc.html"><i class="fa fa-newspaper-o"></i> Tin tức</a></li>
+                <li><a href="tuyendung.html"><i class="fa fa-handshake-o"></i> Tuyển dụng</a></li>
+                <li><a href="gioithieu.html"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
+                <li><a href="trungtambaohanh.html"><i class="fa fa-wrench"></i> Bảo hành</a></li>
+                <li><a href="lienhe.html"><i class="fa fa-phone"></i> Liên hệ</a></li>
+            </ul>
+            <!-- </div> -->
+        </section>
+    </div>
+    <section>
+
+        <!-- Header -->
+        <!-- addHeader(); -->
+        <div class="header group">
+            <div class="logo">
+                <a href="index.html">
+                    <img alt="" title="">
+                </a>
+            </div> <!-- End Logo -->
+
+            <div class="content">
+                <div class="search-header" style="position: relative; left: 162px; top: 1px;">
+                    <form class="input-search" method="get" action="index.html">
+                        <div class="autocomplete">
+                            <input id="search-box" name="search" autocomplete="off" type="text"
+                                placeholder="Nhập từ khóa tìm kiếm...">
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </form> <!-- End Form search -->
+                    <div class="tags">
+                        <strong>Từ khóa: </strong>
+                    </div>
+                </div> <!-- End Search header -->
+
+                <div class="tools-member">
+                    <div class="member">
+                        <a onclick="checkTaiKhoan()">
+                            <i class="fa fa-user"></i>
+                            Tài khoản
+                        </a>
+                        <div class="menuMember hide">
+                            <a href="nguoidung.html">Trang người dùng</a>
+                            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                        </div>
+                    </div> <!-- End Member -->
+
+                    <div class="cart">
+                        <a href="giohang.html">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Giỏ hàng</span>
+                            <span class="cart-number"></span>
+                        </a>
+                    </div> <!-- End Cart -->
+
+                    <div class="check-order">
+                        <a>
+                            <i class="fa fa-truck"></i>
+                            <span>Đơn hàng</span>
+                        </a>
+                    </div>
+                </div><!-- End Tools Member -->
+            </div> <!-- End Content -->
+        </div>
+
+        <!-- Banner -->
+        
+        <div class="banner" style="margin-top:80px;">
+            <div class="owl-carousel owl-theme">
+            
+            </div>
+        </div>
+    </section>
+    <!-- Container -->
+    <script src="./js/Aw/Banner.js"></script>
+
+   
+</body>
+
+</html>
