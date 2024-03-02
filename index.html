@@ -10,17 +10,83 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/topnav.css">
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/container-sanpham.css">
+    <link rel="stylesheet" href="./css/company.css">
     <!-- owl carousel libraries -->
     <link rel="stylesheet" href="./js/owlcarousel/owl.theme.default.min.css">
     <link rel="stylesheet" href="./js/owlcarousel/owl.carousel.min.css">
     <script src="./js/Jquery/Jquery.min.js"></script>
     <script src="./js/owlcarousel/owl.carousel.min.js"></script>
-    <script src='main.js'></script>
+
+
     <script src='./js/Aw/all.js'></script>
     <script src='./js/Aw/Banner.js'></script>
+    <!-- <script src='./js/Aw/home.js'></script> -->
+    <script src='./js/Aw/ClassAw.js'></script>
+    <script src='./data/products.js'></script>
+    <script src='./js/Aw/ThemDanhSachHangSanPham.js'></script>
+    <script src='./js/Aw/home.js'></script>
+    <script src="./js/Aw/container2.js"></script>
     <!-- Include jQuery and Owl Carousel libraries -->
     <!-- Include jQuery -->
-   
+    <style>
+        .khungSanPham {
+            width: 100%;
+            margin: 50px 0;
+            border-radius: 5px;
+            border: 2px solid #ff4d00;
+            box-sizing: border-box;
+            /* dùng để width ko vượt ra ngoài khi có border */
+        }
+
+        .khungSanPham h3.tenKhung {
+            line-height: 1.5em;
+            font-size: 1.5em;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 1em;
+            color: white;
+            transform: translateY(-0.75em);
+        }
+
+        .khungSanPham li {
+            list-style-type: none;
+        }
+
+        .flexContain {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .sanPham {
+            width: 138px;
+            border: 1px solid #eee;
+            -webkit-transition-duration: .3s;
+            -o-transition-duration: .3s;
+            transition-duration: .3s;
+        }
+        /* CSS để ẩn phần tử giỏ hàng ban đầu */
+        .gio-hang-popup {
+            display: none;
+            /* Thêm các style khác tùy ý */
+        }
+
+        /* CSS để hiển thị phần tử giỏ hàng khi được kích */
+        .gio-hang-popup.show {
+            display: block;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -89,12 +155,16 @@
                     </div> <!-- End Member -->
 
                     <div class="cart">
-                        <a href="giohang.html">
-                            <i class="fa fa-shopping-cart"></i>
+                        <a href="gioHang.html">
+                            <i class="fa fa-shopping-cart" onclick = "hienThiGioHang()"></i>
                             <span>Giỏ hàng</span>
-                            <span class="cart-number"></span>
+                            <span id="cart-number"></span>
                         </a>
                     </div> <!-- End Cart -->
+                    <!-- Thêm phần tử hiển thị giỏ hàng -->
+                    <div id="gio-hang-popup" class="gio-hang-popup hide">
+                        <!-- Thông tin giỏ hàng sẽ được thêm vào đây -->
+                    </div>
 
                     <div class="check-order">
                         <a>
@@ -107,17 +177,150 @@
         </div>
 
         <!-- Banner -->
-        
+
         <div class="banner" style="margin-top:80px;">
             <div class="owl-carousel owl-theme">
-            
+
             </div>
         </div>
     </section>
-    <!-- Container -->
     <script src="./js/Aw/Banner.js"></script>
+    <!-- Container -->
+    <img src="img/banners/spotlight.png" alt="" style="width: 100%;">
+    <br>
+    <div class="companyMenu group flexContain"></div>
+    <!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
+    <div class="contain-khungSanPham"></div> 
+    <div class="footer">
+        <script>
+            addFooter();
+        </script>
+    </div>
+    <!-- Thêm giỏ hàng -->
+    <script>
+        var gioHang = [];
+        function themGioHang(tenSp,giaSp,img){
+            var sanPham = {
+                ten: tenSp,
+                gia: giaSp,
+                anh: img
+            };
+            gioHang.push(sanPham);
+            capNhatSoLuongGioHang();
+             // Lưu gioHang vào localStorage
+            luuGioHangVaoLocalStorage();
+        }
+        function capNhatSoLuongGioHang(){
+            var carNumberElement = document.getElementById('cart-number')
+            carNumberElement.textContent = gioHang.length; 
+        }
+        function luuGioHangVaoLocalStorage() {
+            var gioHangJSON = JSON.stringify(gioHang);
+            localStorage.setItem('gioHang', gioHangJSON);
+        }
+        function khoiPhucGioHangTuLocalStorage() {
+            var gioHangJSON = localStorage.getItem('gioHang');
+            if (gioHangJSON) {
+                gioHang = JSON.parse(gioHangJSON);
+                capNhatSoLuongGioHang();
+            }
+        }
+        // Thêm sự kiện click vào biểu tượng giỏ hàng
+      
+    </script>
+    <script>
+        function addFooter() {
+        document.write(`
+        <!-- ============== Alert Box ============= -->
+        <div id="alert">
+            <span id="closebtn">&otimes;</span>
+        </div>
 
-   
+        <!-- ============== Footer ============= -->
+        <div class="copy-right">
+            <p><a href="index.html">TP- Store</a> - All rights reserved © 2023 - Designed by
+                <span style="color: #eee; font-weight: bold">thuộc về cá nhân</span></p>
+        </div>`);
+
+    }
+    </script>
+    <script>
+        // Lấy tham chiếu tới lớp
+      // Dữ liệu sản phẩm mẫu (có thể thay thế bằng dữ liệu thực từ API hoặc cơ sở dữ liệu)
+
+        // Lấy tham chiếu đến phần contain-khungSanPham
+        var containKhungSanPham = document.querySelector('.contain-khungSanPham');
+
+        // Thêm sản phẩm vào phần contain-khungSanPham
+       // Thêm sản phẩm vào phần contain-khungSanPham
+         for (var i = 0; i < 40; i++) {
+            var sanPham = list_products[i];
+
+            var itemHTML = `
+                <div class="sanPham">
+                    <img src="${sanPham.img}" alt="${sanPham.name}">
+                    <h4>${sanPham.name}</h4>
+                    <p>${sanPham.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+                    <button onclick="themGioHang('${sanPham.name}', '${sanPham.price}','${sanPham.img}')">Thêm vào giỏ hàng</button>
+                </div>
+            `;
+
+            // Create a container for each group of 4 products
+            if (i % 2 === 0) {
+                var productGroup = document.createElement('div');
+                productGroup.classList.add('product-group');
+                containKhungSanPham.appendChild(productGroup);
+            }
+
+            // Append the product item to the current product group
+            var productGroupLastChild = containKhungSanPham.lastChild;
+            productGroupLastChild.appendChild(createElementFromHTML(itemHTML));
+
+         }
+        function createElementFromHTML(htmlString) {
+            var div = document.createElement('div');
+            div.innerHTML = htmlString.trim();
+            return div.firstChild;
+        }
+    </script>
+
+    <script>
+        // Danh sách hãng điện thoại
+        var companies = [
+            "Apple.jpg", "Samsung.jpg", "Oppo.jpg", "Nokia.jpg", "Huawei.jpg", "Xiaomi.png",
+            "Realme.png", "Vivo.jpg", "Philips.jpg", "Mobell.jpg", "Mobiistar.jpg", "Itel.jpg",
+            "Coolpad.png", "HTC.jpg", "Motorola.jpg"
+        ];
+        // Thêm hãng điện thoại vào trang web
+        var companyMenu = document.querySelector('.companyMenu');
+        companies.forEach(function (company) {
+            var imgPath = "img/company/" + company;
+            var companyName = company.slice(0, company.length - 4);
+
+            var link = createLinkFilter('add', 'company', companyName);
+            var imgTag = '<img src="' + imgPath + '" alt="' + companyName + '">';
+            var anchorTag = '<a href="' + link + '">' + imgTag + '</a>';
+
+            var div = document.createElement('div');
+            div.innerHTML = anchorTag;
+
+            companyMenu.appendChild(div);
+        });
+
+        // Hàm tạo liên kết filter
+        function createLinkFilter(type, nameFilter, valueAdd) {
+            var currentUrl = window.location.href.split('?')[0]; // Lấy URL hiện tại
+
+            var filters = new URLSearchParams(window.location.search);
+            filters.set(nameFilter, valueAdd);
+
+            var newUrl = currentUrl + '?' + filters.toString(); // Tạo URL mới với filter mới
+
+            return newUrl;
+        };
+    </script>
+    <!-- Div hiển thị khung sp hot, khuyến mãi, mới ra mắt ... -->
+
 </body>
 
 </html>

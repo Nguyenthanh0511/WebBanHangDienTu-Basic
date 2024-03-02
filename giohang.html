@@ -7,8 +7,67 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <style>
+        /* main.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#gio-hang {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.gioHangItem {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    max-width: 200px; /* Điều chỉnh độ rộng tối đa của mỗi mục giỏ hàng */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước phần tử */
+}
+
+.gioHangItem img {
+    max-width: 100%; /* Đảm bảo ảnh không vượt quá phần tử chứa */
+    height: auto; /* Tự động điều chỉnh chiều cao để giữ tỉ lệ khung hình */
+}
+
+    </style>
 </head>
 <body>
-    
+    <div id="gio-hang">
+        
+    </div>
+    <script>
+        // Hàm hiển thị thông tin giỏ hàng từ localStorage
+        function hienThiGioHang() {
+            var gioHangElement = document.getElementById('gio-hang');
+            var gioHangJSON = localStorage.getItem('gioHang');
+            // Kiểm tra xem dữ liệu có tồn tại không
+            if (gioHangJSON) {
+                var gioHang = JSON.parse(gioHangJSON);
+                // Hiển thị thông tin giỏ hàng
+                gioHang.forEach(function (sanPham) {
+                    var itemHTML = `
+                        <div class="gioHangItem">
+                            <p>${sanPham.ten}</p>
+                            <p>${sanPham.gia.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+                            <img src="${sanPham.anh}"/>
+                        </div>
+                    `;
+                    gioHangElement.innerHTML += itemHTML;
+                });
+            } else {
+                gioHangElement.innerHTML = "<p>Giỏ hàng trống</p>";
+            }
+        }
+
+        hienThiGioHang();
+    </script>
 </body>
 </html>

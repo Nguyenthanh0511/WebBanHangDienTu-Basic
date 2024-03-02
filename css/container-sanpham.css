@@ -1,0 +1,19 @@
+/* Thêm vào file CSS của bạn hoặc thẻ <style> trong file HTML */
+
+.contain-khungSanPham {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Có thể sử dụng 'space-around', 'space-evenly' tùy thuộc vào mong muốn của bạn */
+    margin: 0 -10px; /* Để tạo khoảng trắng giữa các phần tử */
+}
+
+.sanPham {
+    width: calc(33.33% - 20px); /* 33.33% để chia thành 3 cột, trừ đi margin */
+    margin: 10px; /* Tạo khoảng trắng giữa các phần tử */
+    box-sizing: border-box; /* Để margin không làm tăng kích thước thực của phần tử */
+    text-align: center;
+}
+
+.sanPham img {
+    max-width: 100%; /* Đảm bảo hình ảnh không vượt quá kích thước của phần tử cha */
+}

@@ -1,0 +1,19 @@
+/* CSS cho hình ảnh trong div.companyMenu */
+.companyMenu{
+}
+.companyMenu a {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.companyMenu img{
+    width: 80%;
+    height: auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.companyMenu a:hover img{
+    transform:scale(1.1);
+    box-shadow:0 0 10px rgba(0,0,0,0.5);   
+}
